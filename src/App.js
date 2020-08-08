@@ -1,11 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Dashboard from './containers/Dashboard'
+import NavBar from './components/NavBar'
+
 
 function App() {
+
+  state = {
+    user_id: null
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
+      
+      <NavBar />
+      <Dashboard/>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -18,7 +30,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
