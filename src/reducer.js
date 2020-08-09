@@ -1,6 +1,13 @@
 let initialState = {
-    currentUser: null
+    currentUser: null,
+    connections: [{name: 'yueying', relationship:'friend', status: 'green'},
+    {name: 'rob', relationship: 'friend', status: 'yellow'}, {name: 'jenny', relationship: 'family', status: 'green'}]
 }
+
+// connections will be fetched from the self ref upon app loading 
+// and filtered by those matching current user ID from our store
+// we can then match the connections ID to all users to pull only the names, relationship, id, and status 
+// which will be set in out store
 
 // example of how to structure async redux functions 
 
