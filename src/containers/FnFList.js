@@ -1,10 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import FnFCard from '../components/FnFCard';
+import Modal from '../components/Modal';
+import ReviewForm from '../components/ReviewForm/ReviewForm';
+import AddConnection from '../components/AddConnection/AddConnection'
 
 const FnFList = (props) => {
     let friends = props.connections.filter(connection => connection.accepted === true)
     let pending = props.connections.filter(connection => connection.accepted === false)
+    console.log(props)
     return (
         <div className='fnf-list'>
             <h3>Family</h3>
@@ -19,15 +23,28 @@ const FnFList = (props) => {
             {pending.map((connection, index) => <FnFCard key={index} pending={true} person={connection}/>
             )}
             <hr></hr>
-            <button>Add Friend</button>
+            <button onClick={()=> props.showAddFriendForm(props.addConnectionModal.open)} >Add Friend</button>
+            <button onClick={()=>props.showReviewForm(props.reviewModal.open)} >Review</button>
+            <Modal modalShow={props.reviewModal.open || props.addConnectionModal.open}>
+                {props.reviewModal.open?<ReviewForm modalShow={props.reviewModal.open}/> : null}
+                {props.addConnectionModal.open? <AddConnection modalShow={props.addConnectionModal.open} /> : null}
+            </Modal>
         </div>
     );
 }
 
 const msp = (state) => {
     return {
-        connections: state.connections
+        connections: state.connections,
+        reviewModal: state.reviewModal,
+        addConnectionModal: state.addConnectionModal,
+    }
+}
+const mdp = dispatch => {
+    return {
+        showReviewForm: (modalShow) => dispatch({type: 'SHOW_REVIEW_FORM', payload:{open: !modalShow}}),
+        showAddFriendForm: (modalShow) => dispatch({type: 'SHOW_CONNECTION_FORM', payload:{open: !modalShow}})
     }
 }
 
-export default connect(msp)(FnFList);
+export default connect(msp, mdp)(FnFList);
