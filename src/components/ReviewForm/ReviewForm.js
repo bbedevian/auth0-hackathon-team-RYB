@@ -3,23 +3,22 @@ import classes from "./ReviewForm.module.css";
 
 const ReviewForm = () => {
 	useEffect(() => {
-		console.log("CALLING THE HOOK");
 		const range = document.getElementById("range"),
 			rangeV = document.getElementById("rangeV"),
 			setValue = () => {
-				console.log(range.value);
-				if (range.value === "1")
+				let num = parseInt(range.value)
+				if (num === 1)
 					rangeV.style.transform = "translateX(-60px)";
-				if (range.value === "2")
+				if (num === 2)
 					rangeV.style.transform = "translateX(-30px)";
-				if (range.value === "3")
+				if (num === 3)
 					rangeV.style.transform = "translateX(-0px)";
-				if (range.value === "4")
+				if (num === 4)
 					rangeV.style.transform = "translateX(30px)";
-				if (range.value === "5")
+				if (num === 5)
 					rangeV.style.transform = "translateX(60px)";
 				rangeV.innerHTML = `<span>${
-					range.value ? range.value : range.defaultValue
+					num ? num : range.defaultValue
 				}</span>`;
 			};
 		setValue();
@@ -38,7 +37,7 @@ const ReviewForm = () => {
 					name="crowded"
 					min="1"
 					max="5"
-					defaultValue="3"
+					defaultValue='3'
 				/>
 				<div>
 					<p>Were employees wearing masks?</p>
