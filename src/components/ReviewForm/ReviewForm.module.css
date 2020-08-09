@@ -1,0 +1,16 @@
+.Bubble {
+	background: #2FC0F5;
+	color: white;
+	padding: 4px 12px;
+   border-radius: 4px;
+   width: 2%;
+   text-align: center;
+   display: block;
+   margin: auto;
+   transform: translateX(-0px);
+}
+
+.Checkbox{
+   display: inline-block;
+   padding-right: 50px;
+}
