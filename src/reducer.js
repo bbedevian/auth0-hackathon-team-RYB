@@ -1,7 +1,10 @@
 let initialState = {
     currentUser: null,
-    connections: [{name: 'yueying', relationship:'friend', status: 'green'},
-    {name: 'rob', relationship: 'friend', status: 'yellow'}, {name: 'jenny', relationship: 'family', status: 'green'}]
+    connections: [{name: 'yueying', relationship:'friend', status: 'green', accepted: true},
+    {name: 'rob', relationship: 'friend', status: 'yellow', accepted: true}, 
+    {name: 'jenny', relationship: 'family', status: 'green', accepted: true}, 
+    {name: 'danny', relationship: 'friend', status: 'red', accepted: false}],
+    myActivities: []
 }
 
 // connections will be fetched from the self ref upon app loading 
