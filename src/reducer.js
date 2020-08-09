@@ -29,6 +29,8 @@ export const reducer = (prevState=initialState, action) => {
             return {...prevState, users: action.payload.users}
         case 'SET_USER':
             return {...prevState, currentUser: action.payload.user}
+        case 'ADD_CONNECTION':
+            return {...prevState, nameSearch: action.payload.nameSearch}
         default: 
             return {...prevState}
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import FnFList from './FnFList';
 import NewActivityBox from '../components/NewActivityBox';
 import ActivityFeed from './ActivityFeed';
+import AddConnection from '../components/AddConnection/AddConnection';
 
 const Dashboard = () => {
     return (
@@ -10,6 +11,7 @@ const Dashboard = () => {
             <div>
                 <NewActivityBox/>
                 <ActivityFeed/>
+                <AddConnection/>
             </div>
         </div>
     );

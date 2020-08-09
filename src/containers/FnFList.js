@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import FnFCard from '../components/FnFCard';
-import ReviewForm from '../components/ReviewForm/ReviewForm';
 
 const FnFList = (props) => {
     let friends = props.connections.filter(connection => connection.accepted === true)
@@ -21,7 +20,6 @@ const FnFList = (props) => {
             )}
             <hr></hr>
             <button>Add Friend</button>
-            <ReviewForm/>
         </div>
     );
 }
