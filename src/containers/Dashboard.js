@@ -11,7 +11,6 @@ const Dashboard = () => {
             <div>
                 <NewActivityBox/>
                 <ActivityFeed/>
-                <AddConnection/>
             </div>
         </div>
     );

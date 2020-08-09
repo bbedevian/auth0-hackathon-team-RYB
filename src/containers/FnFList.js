@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import FnFCard from '../components/FnFCard';
+import Modal from '../components/Modal/Modal'
 import ReviewForm from '../components/ReviewForm/ReviewForm';
 import AddConnection from '../components/AddConnection/AddConnection';
 
@@ -30,7 +31,11 @@ const FnFList = (props) => {
 				<FnFCard key={index} pending={true} person={connection} />
 			))}
 			<hr></hr>
+
 			<button>Add Friend</button>
+			<Modal>
+
+			</Modal>
 		</div>
 	);
 };
