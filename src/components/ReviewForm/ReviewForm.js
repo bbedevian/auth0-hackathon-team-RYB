@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import classes from "./ReviewForm.module.css";
+import { connect } from "react-redux";
+import Modal from "../Modal";
 
-const ReviewForm = () => {
+const ReviewForm = (props) => {
 	useEffect(() => {
 		const range = document.getElementById("range"),
 			rangeV = document.getElementById("rangeV"),
@@ -25,6 +27,7 @@ const ReviewForm = () => {
 		range.addEventListener("input", setValue);
 	});
 
+	console.log(props)
 	return (
 		<div>
 			<form>
@@ -42,7 +45,7 @@ const ReviewForm = () => {
 				<div>
 					<p>Were employees wearing masks?</p>
 					<div className={classes.Checkbox}>
-						<label for="employeesYes">Yes</label>
+						<label htmlFor="employeesYes">Yes</label>
 						<input
 							type="checkbox"
 							id="employeesYes"
@@ -50,7 +53,7 @@ const ReviewForm = () => {
 							value={true}
 						/>
 					</div>
-					<label for="employeesNo">No</label>
+					<label htmlFor="employeesNo">No</label>
 					<input
 						type="checkbox"
 						id="employeesNo"
@@ -61,7 +64,7 @@ const ReviewForm = () => {
 				<div>
 					<p>Were customers wearing masks?</p>
 					<div className={classes.Checkbox}>
-						<label for="customersYes">Yes</label>
+						<label htmlFor="customersYes">Yes</label>
 						<input
 							type="checkbox"
 							id="customersYes"
@@ -69,7 +72,7 @@ const ReviewForm = () => {
 							value={true}
 						/>
 					</div>
-					<label for="customersNo">No</label>
+					<label htmlFor="customersNo">No</label>
 					<input
 						type="checkbox"
 						id="customersNo"
@@ -84,9 +87,18 @@ const ReviewForm = () => {
 					</p>
 					<textarea name="additionalComments" rows="5" cols="50" />
 				</div>
-				<button type="submit">Submit</button>
+				<button onClick={() =>props.showReviewForm(props.modalShow)} type="submit">Submit</button>
 			</form>
 		</div>
 	);
 };
-export default ReviewForm;
+
+const msp = () => {};
+
+const mdp = (dispatch) => {
+	return {
+		showReviewForm: (modalShow) => {dispatch({ type: "SHOW_REVIEW_FORM", payload: { open: !modalShow } });},
+	};
+};
+
+export default connect(null, mdp)(ReviewForm);

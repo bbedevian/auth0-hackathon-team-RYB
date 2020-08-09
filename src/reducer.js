@@ -16,7 +16,13 @@ let initialState = {
     ],
     locations: [{id: 1, name: 'whole foods'}, {id: 2, name: 'CVS'},
     {id: 3, name: 'Dos Toros'},{id: 4, name: 'Hummus Kitchen'},
-    {id: 5, name: 'subway'},{id: 6, name: 'bubble tea store'},]
+    {id: 5, name: 'subway'},{id: 6, name: 'bubble tea store'},],
+    reviewModal:{
+        open: false
+    },
+    addConnectionModal:{
+        open:false
+    },
 }
 
 // connections will be fetched from the self ref upon app loading 
@@ -45,6 +51,10 @@ export const reducer = (prevState=initialState, action) => {
             return {...prevState, currentUser: action.payload.user}
         case 'ADD_CONNECTION':
             return {...prevState, nameSearch: action.payload.nameSearch}
+        case 'SHOW_REVIEW_FORM':
+            return{...prevState, reviewModal:{open: action.payload.open}}
+        case 'SHOW_CONNECTION_FORM':
+            return{...prevState, addConnectionModal:{open: action.payload.open}}
         default: 
             return {...prevState}
     }

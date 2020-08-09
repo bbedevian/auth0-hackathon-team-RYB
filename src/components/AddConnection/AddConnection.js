@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 const AddConnection = (props) => {
+   console.log(props)
    const friends = [
       {name: 'brett'},
       {name: 'bob'},
@@ -24,6 +25,7 @@ const AddConnection = (props) => {
                <div>{friend.name}</div>
             ): null}
             <button onClick={() => setNameSearch()}>Request Connection</button>
+            <button onClick={() => props.showAddFriendForm(props.modalShow)}>Close</button>
          </form>
       </div>
          
@@ -31,7 +33,8 @@ const AddConnection = (props) => {
 } 
 const mapDispatchToProps = dispatch => {
    return {
-      onSearchName: (name) => dispatch({type:'ADD_CONNECTION', payload: {nameSearch: name }})
+      onSearchName: (name) => dispatch({type:'ADD_CONNECTION', payload: {nameSearch: name }}),
+      showAddFriendForm: (modalShow) => dispatch({type: 'SHOW_CONNECTION_FORM', payload:{open: !modalShow}})
    }
 }
 const mapStateToProps = state => {

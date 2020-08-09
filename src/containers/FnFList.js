@@ -31,11 +31,12 @@ const FnFList = (props) => {
 				<FnFCard key={index} pending={true} person={connection} />
 			))}
 			<hr></hr>
-
-			<button>Add Friend</button>
-			<Modal>
-
-			</Modal>
+			<button onClick={()=> props.showAddFriendForm(props.addConnectionModal.open)} >Add Friend</button>
+            <button onClick={()=>props.showReviewForm(props.reviewModal.open)} >Review</button>
+            <Modal modalShow={props.reviewModal.open || props.addConnectionModal.open}>
+					{props.reviewModal.open?<ReviewForm modalShow={props.reviewModal.open}/> : null}
+					{props.addConnectionModal.open? <AddConnection modalShow={props.addConnectionModal.open} /> : null}
+            </Modal>
 		</div>
 	);
 };
@@ -46,4 +47,4 @@ const msp = (state) => {
 	};
 };
 
-export default connect(msp)(FnFList);
+export default connect(msp, mdp)(FnFList);
